@@ -1,0 +1,6 @@
+
+Request:
+{"name":"wahyu","password":null,"phone":"628191891891891"}
+
+Responses:
+{"code":"Bad Request","message":"user password must not empty","serverTime":1645898927042}

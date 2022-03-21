@@ -1,0 +1,6 @@
+
+Request:
+{"name":"wahyu","password":"${42*42}","phone":"\"\u0026\u0026touch /tmp/jdam.71334.fail'"}
+
+Responses:
+{"code":"Created","message":"SUCCESS","serverTime":1645898900194}

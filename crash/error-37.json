@@ -1,0 +1,6 @@
+
+Request:
+{"name":"ÅÍÎÏ˝ÓÔÒÚÆ☃","password":"${42*42}","phone":"628191891891891"}
+
+Responses:
+{"code":"Conflict","message":"user with this phone already exist","serverTime":1645898857567}

@@ -1,0 +1,6 @@
+
+Request:
+{"name":"wahyu","password":"${42*42}","phone":"𠜎𠜱𠝹𠱓𠱸𠲖𠳏"}
+
+Responses:
+{"code":"Created","message":"SUCCESS","serverTime":1645898907858}

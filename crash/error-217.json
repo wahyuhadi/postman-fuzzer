@@ -1,0 +1,6 @@
+
+Request:
+{"name":{"password":{"$regex":"^mdp"},"username":{"$eq":"admin"}},"password":"${42*42}","phone":"628191891891891"}
+
+Responses:
+{"code":"Bad Request","message":"json not in correct format","serverTime":1645898895642}

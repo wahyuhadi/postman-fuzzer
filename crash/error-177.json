@@ -1,0 +1,6 @@
+
+Request:
+{"name":"wahyu","password":"${42*42}","phone":"%#0123456x%08x%x%s%p%d%n%o%u%c%h%l%q%j%z%Z%t%i%e%g%f%a%C%S%08x%%"}
+
+Responses:
+{"code":"Conflict","message":"user with this phone already exist","serverTime":1645898887258}

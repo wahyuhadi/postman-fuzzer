@@ -1,0 +1,6 @@
+
+Request:
+{"name":"wahyu","password":{"$where":"1"},"phone":"628191891891891"}
+
+Responses:
+{"code":"Bad Request","message":"json not in correct format","serverTime":1645898868228}
