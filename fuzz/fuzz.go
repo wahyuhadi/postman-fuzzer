@@ -13,10 +13,10 @@ import (
 	"strings"
 	"time"
 
-	"gitlab.com/michenriksen/jdam/pkg/jdam"
-	"gitlab.com/michenriksen/jdam/pkg/jdam/mutation"
-
+	"github.com/wahyuhadi/jdam/pkg/jdam"
+	"github.com/wahyuhadi/jdam/pkg/jdam/mutation"
 	"github.com/wahyuhadi/postman-fuzz/models"
+	"github.com/wahyuhadi/postman-fuzz/services"
 )
 
 var localCertFile = "/home/samalas/.key.pem"
@@ -96,17 +96,31 @@ func DoFuzz(opt *models.Opts, reqs *[]models.Request) {
 					log.Fatal(err)
 					return
 				}
+				bodyBytes, err := ioutil.ReadAll(resp.Body)
+				// b, err := ioutil.ReadAll(resp.Body)  Go.1.15 and earlier
+				if err != nil {
+					log.Fatalln(err)
+				}
+
+				if opt.Elastic {
+					// do push to elastic
+					pushtoElastic := &models.Elastic{
+						Method:     req.Req.Method,
+						Endpoint:   req.Req.URL.String(),
+						ReqBody:    string(fuzzedJSON),
+						ResBody:    string(bodyBytes),
+						RespStatus: resp.StatusCode,
+					}
+					// push data to elastic
+					services.Elastic(opt, pushtoElastic)
+
+				}
 				if resp.StatusCode != 200 {
 					defer resp.Body.Close()
 					// Our payload has caused some sort of internal server error!
 					// Write the payload to a file for further research.
-					b, err := io.ReadAll(resp.Body)
-					// b, err := ioutil.ReadAll(resp.Body)  Go.1.15 and earlier
-					if err != nil {
-						log.Fatalln(err)
-					}
 
-					save := fmt.Sprintf("\nRequest:\n%v\n\nResponses:\n%v", string(fuzzedJSON), string(b))
+					save := fmt.Sprintf("\nRequest:\n%v\n\nResponses:\n%v", string(fuzzedJSON), string(bodyBytes))
 					ioutil.WriteFile(fmt.Sprintf("crash/error-%v.json", i), []byte(save), 0644)
 				}
 

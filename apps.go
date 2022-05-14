@@ -14,15 +14,22 @@ var (
 	proxy       = flag.String("p", "", "Proxy server")
 	keyheader   = flag.String("key", "", "key headers")
 	valueheader = flag.String("value", "", "value headers")
+	elastic     = flag.Bool("elastic", false, "push to elastic")
+	elastricURI = flag.String("elasticurl", "http://127.0.0.1:9200", "elastic url")
 )
 
 func initOps() *models.Opts {
 	flag.Parse()
 	return &models.Opts{
-		Location:    *location,
-		Proxy:       *proxy,
-		KeyHeader:   *keyheader,
-		ValueHeader: *valueheader,
+		Location:     *location,
+		Proxy:        *proxy,
+		KeyHeader:    *keyheader,
+		ValueHeader:  *valueheader,
+		Elastic:      *elastic,
+		ElasticURI:   *elastricURI,
+		ElasticUser:  "tes",
+		ElasticPass:  "tes",
+		ElasticIndex: "ngetest",
 	}
 }
 
